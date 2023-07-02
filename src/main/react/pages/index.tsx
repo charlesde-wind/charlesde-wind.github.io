@@ -1,6 +1,6 @@
 import { JsxElement } from "typescript";
 import AboutMe from "./components/about-me";
-import WorkExp from "./components/work-exp";
+import WorkExp from "./components/work-experience";
 import Certifications from "./components/certifications";
 import Education from "./components/education";
 import '../app/globals.css'
