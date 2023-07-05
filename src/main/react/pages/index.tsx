@@ -4,6 +4,7 @@ import WorkExp from "./components/work-experience";
 import Certifications from "./components/certifications";
 import Education from "./components/education";
 import '../app/globals.css'
+import Footer from "@/pages/components/footer";
 
 
 const Homepage = (): JSX.Element => {
@@ -11,8 +12,9 @@ const Homepage = (): JSX.Element => {
         <>
             <AboutMe/>
             <WorkExp/>
-            <Certifications />
             <Education />
+            <Certifications />
+            <Footer />
         </>
     )
 }

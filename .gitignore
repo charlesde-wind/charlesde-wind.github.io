@@ -4,6 +4,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 !**/src/main/react/node_modules/
+src/main/react/node_modules/
+src/main/react/.next/static/webpack/
 *.env
 
 ### STS ###
