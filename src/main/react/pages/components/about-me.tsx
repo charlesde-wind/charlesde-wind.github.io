@@ -6,6 +6,7 @@ export default function AboutMe(){
     let name :string = "Charles De-Wind";
     let bio :string  = "A software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success. Well-versed in technology and writing code to create systems that are reliable and user-friendly. Skilled leader who has the proven ability to motivate, educate, and manage a team of professionals to build software programs and effectively track changes.";
 
+    fetch("http://localhost:8080/api/jobs").then(x=> console.log(x.json()));
 
     return (
         <div className='bg-white min-h-screen' id="about-me">
