@@ -11,8 +11,9 @@ import java.util.Date;
 public record WorkExperience (
         @Id String id,
         String jobRole,
+        String company,
         String jobResponsibilities,
-        Date startDate,
-        Date endDate,
+        String startDate,
+        String endDate,
         String location,
         String[] tags){ }

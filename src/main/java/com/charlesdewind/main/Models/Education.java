@@ -10,5 +10,6 @@ public record Education (
         String nameOfCourse,
         String startDate,
         String endDate,
-        String gradesObtained
+        String gradesObtained,
+        String location
 ){ }

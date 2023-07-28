@@ -1,24 +1,32 @@
 import { JsxElement } from "typescript";
+import {useEffect, useState} from "react";
+import {fetchFunction} from "@/pages";
 
 class Jobs {
-  nameOfCompany: string;
-  startDate: Date;
-  endDate: Date;
-  responsibilities: string;
-  role: string;
+  company: string;
+  startDate: string;
+  endDate: string;
+  jobResponsibilities: string;
+  jobRole: string;
+  location:string;
+  tags:string[]| undefined;
 
   constructor(
-      nameOfCompany: string,
-      startDate: Date,
-      endDate: Date,
-      responsibilities: string,
-      role: string
+      company: string,
+      startDate: string,
+      endDate: string,
+      jobResponsibilities: string,
+      jobRole: string,
+      location:string,
+      tags: string[] | undefined
   ) {
-    this.nameOfCompany = nameOfCompany;
+    this.company = company;
     this.startDate = startDate;
     this.endDate = endDate;
-    this.responsibilities = responsibilities;
-    this.role = role;
+    this.jobResponsibilities = jobResponsibilities;
+    this.jobRole = jobRole;
+    this.location = location;
+    tags ? this.tags = tags: undefined;
   }
 }
 
@@ -33,36 +41,28 @@ function RenderBulletPoints({ desc }: { desc: string }) {
 }
 
 export default function WorkExp() {
-  const workExp: Jobs[] = [
-    new Jobs(
-        "PWC",
-        new Date(2022, 5, 12),
-        new Date(2022, 7, 25),
-        "Liaised with members in the CMAS team to help create new solutions and modify existing tools in place, using technologies such as Microsoft PowerBi and Google Appscript.\nLiaised with members in the CMAS team to help create new solutions and modify existing tools in place, using technologies such as Microsoft PowerBi and Google Appscript.",
-        "Junior Software Developer"
-    ),
-    new Jobs(
-        "PWC",
-        new Date(2022, 5, 12),
-        new Date(2022, 7, 25),
-        "Liaised with members in the CMAS team to help create new solutions and modify existing tools in place, using technologies such as Microsoft PowerBi and Google Appscript.",
-        "Junior Software Developer"
-    ),
-    new Jobs(
-        "PWC",
-        new Date(2022, 5, 12),
-        new Date(2022, 7, 25),
-        "Liaised with members in the CMAS team to help create new solutions and modify existing tools in place, using technologies such as Microsoft PowerBi and Google Appscript.",
-        "Junior Software Developer"
-    ),
-    new Jobs(
-        "PWC",
-        new Date(2022, 5, 12),
-        new Date(2022, 7, 25),
-        "Liaised with members in the CMAS team to help create new solutions and modify existing tools in place, using technologies such as Microsoft PowerBi and Google Appscript.",
-        "Junior Software Developer"
-    ),
-  ];
+
+  const [workExp, setWorkExp] = useState<Jobs[]>([])
+
+  useEffect(()=>{
+    fetchFunction("http://localhost:8080/api/jobs")
+        .then(listOfWorkExp =>{
+          setWorkExp(
+              (prevState)=>{
+                return listOfWorkExp.map((work:Jobs) => new Jobs(
+                    work.company,
+                    work.startDate,
+                    work.endDate,
+                    work.jobResponsibilities,
+                    work.jobRole,
+                    work.location,
+                    work.tags
+                ))
+              }
+          )
+        })
+  },[])
+
 
   return (
       <div className="bg-white py-24 sm:py-20" id="work-experience">
@@ -79,7 +79,7 @@ export default function WorkExp() {
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
               {workExp.map((work) => (
                   <div
-                      key={work.nameOfCompany}
+                      key={work.company}
                       className="relative pl-16 hover:pl-20"
                   >
                     <dt className="text-lg font-semibold leading-7 text-gray-900">
@@ -89,14 +89,13 @@ export default function WorkExp() {
                             aria-hidden="true"
                             />
                         </div> */}
-                      {work.role},&nbsp;{work.nameOfCompany}
+                      {work.jobRole},&nbsp;{work.company}
                     </dt>
                     <dt className="text-base font-regular leading-8 text-gray-700">
-                      {work.startDate.toLocaleDateString("en-UK")} -&nbsp;{" "}
-                      {work.endDate.toLocaleDateString("en-UK")}
+                      {work.startDate} -&nbsp;{" "} {work.endDate}
                     </dt>
                     <dd className="mt-2 text-base leading-7 text-gray-600">
-                      <RenderBulletPoints desc={work.responsibilities} />
+                      <RenderBulletPoints desc={work.jobResponsibilities} />
                     </dd>
                   </div>
               ))}
