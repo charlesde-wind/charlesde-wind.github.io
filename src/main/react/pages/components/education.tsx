@@ -8,19 +8,21 @@ class EducationObj {
     nameOfCourse: string;
     startDate: string;
     endDate: string;
-    gradeObtained: string;
+    gradesObtained: string;
+    location : null | string;
 
     constructor(
         nameOfInstitution: string,
         nameOfCourse: string,
         startDate: string,
         endDate: string,
-        gradeObtained: string) {
+        gradesObtained: string, location?: string) {
         this.nameOfInstitution = nameOfInstitution;
         this.nameOfCourse = nameOfCourse;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.gradeObtained = gradeObtained;
+        this.gradesObtained = gradesObtained;
+        this.location = location ? location: null;
     }
 }
 
@@ -37,31 +39,68 @@ export default function Education() {
 
     const [currentObj, setCurrentObj] = useState<EducationObj>()
 
+    const [counter, setCounter] = React.useState(0)
+
+    const education:EducationObj[] = [
+        {
+            nameOfInstitution: "UOB",
+            nameOfCourse: "BSc Computer Science with Digital Technology Partnership – PwC",
+            startDate: "2021",
+            endDate: "2025",
+            gradesObtained: "First Class Honors",
+            location: null
+        },
+        {
+            nameOfInstitution: "UOB",
+            nameOfCourse: "BSc Computer Science",
+            startDate: "2021",
+            endDate: "2025",
+            gradesObtained: "First Class Honors",
+            location: null
+        },
+        {
+            nameOfInstitution: "Beechwood School",
+            nameOfCourse: "BSc Computer Science",
+            startDate: "2021",
+            endDate: "2025",
+            gradesObtained: "Business-A*, Mathematics-A* and Physics-A",
+            location: null
+        }
+    ];
+
     // fetch("http://localhost:8080/api/jobs").then(x=> console.log(x.json()));
     useEffect(() => {
-        fetchFunction("http://localhost:8080/api/education").then(
-            listOfObj => {
-                setListOfEducationObj((prevState) => {
-                        return listOfObj.map((obj: EducationObj) => {
-                                return new EducationObj(
-                                    obj.nameOfInstitution, obj.nameOfCourse, obj.startDate, obj.endDate, obj.gradeObtained
-                                )
-                            }
+        // fetchFunction("/api/education").then(
+        //     listOfObj => {
+        //         setListOfEducationObj((prevState) => {
+        //                 return listOfObj.map((obj: EducationObj) => {
+        //                         return new EducationObj(
+        //                             obj.nameOfInstitution, obj.nameOfCourse, obj.startDate, obj.endDate, obj.gradeObtained
+        //                         )
+        //                     }
+        //                 )
+        //             }
+        //         )
+        //         setCurrentObj(listOfObj[0])
+        //         setCounter(1);
+        //     }
+        setListOfEducationObj((prevState) => {
+                return education.map((obj: EducationObj) => {
+                        return new EducationObj(
+                            obj.nameOfInstitution, obj.nameOfCourse, obj.startDate, obj.endDate, obj.gradesObtained
                         )
                     }
                 )
-                setCurrentObj(listOfObj[0])
             }
-        );
+        )
+        setCurrentObj(education[0])
+        setCounter(1);
 
     }, [])
 
-    const [counter, setCounter] = React.useState(0)
-
     const switchEducationObj = () => {
-        setCounter((counter + 1) % listOfEducationObj.length);
-        console.log(counter)
-        setCurrentObj(oldObj => listOfEducationObj[counter])
+        setCurrentObj(prevCurrentObj => listOfEducationObj[counter]);
+        setCounter(oldCounter => (oldCounter + 1) % listOfEducationObj.length);
     }
 
     const renderObj =
@@ -74,7 +113,7 @@ export default function Education() {
                     {currentObj.nameOfInstitution},&nbsp;{currentObj.startDate}-{currentObj.endDate}
                 </h1>
                 <h1>
-                    Grades: {currentObj.gradeObtained}
+                    Grades: {currentObj.gradesObtained}
                 </h1>
                 <button className={"sm:mt-6"} onClick={switchEducationObj}>Next</button>
             </div>) :

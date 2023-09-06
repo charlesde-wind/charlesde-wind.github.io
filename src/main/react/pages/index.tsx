@@ -4,22 +4,26 @@ import Certifications from "./components/certifications";
 import Education from "./components/education";
 import '../app/globals.css'
 import Footer from "@/pages/components/footer";
+import React from "react";
+import {ParallaxProvider} from "react-scroll-parallax";
 
 const Homepage = (): JSX.Element => {
     return (
         <>
-            <AboutMe/>
-            <WorkExp/>
-            <Education />
-            <Certifications />
-            <Footer />
+            <ParallaxProvider>
+                <AboutMe/>
+                <WorkExp/>
+                <Education />
+                <Certifications />
+                <Footer />
+            </ParallaxProvider>
         </>
     )
 }
 
 const fetchFunction = async (url:string) => {
 
-    return fetch(url, {method:"GET"})
+    return fetch(process.env.backendServer+url, {method:"GET"})
         .then(response=>{
             if(response.status!==200)
             {

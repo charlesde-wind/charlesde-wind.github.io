@@ -1,7 +1,6 @@
 import Image from 'next/image'
-import NavButton from './nav-button';
-import {fetchFunction} from "@/pages";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Parallax, useParallax} from "react-scroll-parallax";
 
 export default function AboutMe(){
 
@@ -10,15 +9,23 @@ export default function AboutMe(){
 
     const [myObj, setMyObj] = useState({"name":"","bio":""})
 
+    const aboutme =
+        {
+            bio: "A software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success. Well-versed in technology and writing code to create systems that are reliable and user-friendly. Skilled leader who has the proven ability to motivate, educate, and manage a team of professionals to build software programs and effectively track changes.",
+            name: "Charles De-Wind"
+        }
+
     // fetch("http://localhost:8080/api/jobs").then(x=> console.log(x.json()));
     useEffect(()=>{
-         fetchFunction("http://localhost:8080/api/about-me").then(
-            z=> {
-                setMyObj((prevState)=>({name:z[0].name, bio:z[0].bio}))
-            }
-        );
+        //  fetchFunction("/api/about-me").then(
+        //     z=> {
+        //         setMyObj((prevState)=>({name:z[0].name, bio:z[0].bio}))
+        //     }
+        // );
+        setMyObj((prevState) => (
+            {name: aboutme.name,bio: aboutme.bio}));
 
-    },[])
+    },[aboutme.name,aboutme.bio])
 
     return (
         <div className='bg-white min-h-screen' id="about-me">
@@ -28,6 +35,7 @@ export default function AboutMe(){
                         <p className='sm:mt-8 text-lg font-bold tracking-tight text-gray-900 sm:text-6xl'>{myObj.name}</p>
                         <h1 className='sm:mt-20 text-base tracking-tight sm:text-2xl'>{myObj.bio}</h1>
                     </div>
+                    <Parallax speed={30}>
                     <div className='basis-1/3 justify-self-end'>
                         <div className='rounded-full overflow-hidden sm:h-5/6 sm:w-5/6'>
                             <Image
@@ -38,9 +46,10 @@ export default function AboutMe(){
                             />
                         </div>
                     </div>
+                    </Parallax>
                 </div>
             </div>
-            <NavButton url={"#work-experience"} name='Next'/>
+            {/*<NavButton url={"#work-experience"} name='Next'/>*/}
         </div>
 
     );

@@ -1,0 +1,12 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/components/certifications": "pages/components/certifications.html",
+  "/components/about-me": "pages/components/about-me.html",
+  "/components/footer": "pages/components/footer.html",
+  "/components/work-experience": "pages/components/work-experience.html",
+  "/components/education": "pages/components/education.html",
+  "/": "pages/index.html",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
