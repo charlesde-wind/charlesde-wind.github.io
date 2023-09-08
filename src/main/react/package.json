@@ -6,7 +6,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b main",
-    "deploy-two": "npm run build && cp -r .github build/ && git add . && git commit -m 'adding .github file' && git push origin main ",
+    "deploy-two": "npm run build && cp -r .github build/ && cd build && git init && git remote add origin git@github.com:charlesde-wind/charlesde-wind.github.io.git && git add . && git commit -m 'adding .github file' && git push origin main --force",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

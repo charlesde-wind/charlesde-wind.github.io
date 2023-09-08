@@ -29,16 +29,17 @@ export default function AboutMe(){
 
     return (
         <div className='bg-white min-h-screen' id="about-me">
-            <div className="sm:pt-20 px-28 sm:px-10">
-                <div className='flex-row flex jusify-end bg-pink-200/50 max-h-full rounded-2xl sm:p-12 sm:gap-12 hover:bg-pink-200/25 hover:shadow-lg'>
-                    <div className='basis-2/3 p-10'>
-                        <p className='sm:mt-8 text-lg font-bold tracking-tight text-gray-900 sm:text-6xl'>{myObj.name}</p>
-                        <h1 className='sm:mt-20 text-base tracking-tight sm:text-2xl'>{myObj.bio}</h1>
+            <div className="px-6 pt-6 sm:px-12 md:pt-20 md:px-10">
+                <div className='flex-col md:flex-row flex jusify-end bg-pink-200/50 max-h-full rounded-2xl sm:p-12 sm:gap-12 hover:bg-pink-200/25 hover:shadow-lg'>
+                    <div className='sm:basis-1/2 lg:basis-2/3 p-10 '>
+                        <p className='mb-4 lg:mb-0 sm:mb-2 sm:mt-4 lg:mt-8 text-4xl font-bold tracking-tight text-gray-900 sm:text-2xl lg:text-6xl'>{myObj.name}</p>
+                        <h1 className='mt-8 sm:mt-8 lg:mt-20 text-base tracking-tight sm:text-base lg:text-2xl'>{myObj.bio}</h1>
                     </div>
                     <Parallax speed={30}>
-                    <div className='basis-1/3 justify-self-end'>
-                        <div className='rounded-full overflow-hidden sm:h-5/6 sm:w-5/6'>
+                    <div className='basis-1/2 lg:basis-1/3 justify-self-end'>
+                        <div className='rounded-full w-6/12 overflow-hidden sm:pr-0 sm:w-6/12 md:h-5/6 md:w-5/6 sm:mt-0 mx-auto md:mt-20 lg:mt-14 '>
                             <Image
+                                className={"w-80 object-cover md:h-80 md:w-80  "}
                                 src={"/images/IMG_2056.jpeg"}
                                 alt="Picture of the author"
                                 width={500}

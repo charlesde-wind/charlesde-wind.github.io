@@ -18,7 +18,6 @@ import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "${frontend.server}")
-//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor

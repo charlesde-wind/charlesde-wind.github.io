@@ -20,11 +20,11 @@ export default function Footer(): JSX.Element {
 
 
     return (
-        <div className={"bg-white"}>
+        <div className={"bg-white px-6"}>
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 Checkout These &#8594;
             </h2>
-            <div className={"flex flex-col sm:flex-row sm:py-6 sm:max-w-md"}>
+            <div className={"flex flex-row py-4 sm:py-6 sm:max-w-md"}>
                 <FooterBtn buttonName={"Github"} href={"https://github.com/charlesde-wind/"}>
                     <GitHubIcon fontSize={"large"}/>
                 </FooterBtn>
@@ -62,7 +62,7 @@ function FooterBtn(props:FooterBtnProps) {
     }
 
     return (
-        <a className={`basis-1/3 ${hovering ? 'text-pink-200' : ''}`}
+        <a className={`basis-1/3 mb-4  ${hovering ? 'text-pink-200' : ''}`}
                 onMouseOver={onMouseOverHandler}
                 onMouseLeave={onMouseLeaveHandler}
                 href={props.href}

@@ -105,7 +105,7 @@ export default function Education() {
 
     const renderObj =
         currentObj ?
-            (<div className={"basis-1/2 rounded-lg bg-pink-200/50 sm:px-12 sm:py-12 sm:m-8"}>
+            (<div className={"rounded-lg bg-pink-200/50 px-6 py-12 sm:px-12 sm:py-12 sm:m-8"}>
                 <h1>
                     {currentObj.nameOfCourse}
                 </h1>
@@ -120,8 +120,8 @@ export default function Education() {
             (<p>No education available</p>)
 
     return (
-        <div className={"text-center sm:p-20 bg-white"}>
-            <h1 className={"text-2xl sm:text-5xl font-semibold tracking-tight sm:mb-16"}>Education</h1>
+        <div className={"text-center bg-white h-96 sm:min-h-full sm:mb-32"}>
+            <h1 className={"text-3xl sm:text-5xl font-semibold tracking-tight mb-16"}>Education</h1>
             <div className="flex flex-row sm:px-10 justify-center">
                 {renderObj}
             </div>
