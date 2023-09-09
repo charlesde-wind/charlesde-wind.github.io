@@ -89,7 +89,7 @@ function Education() {
         setCounter((oldCounter)=>(oldCounter + 1) % listOfEducationObj.length);
     };
     const renderObj = currentObj ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "basis-1/2 rounded-lg bg-pink-200/50 sm:px-12 sm:py-12 sm:m-8",
+        className: "rounded-lg bg-pink-200/50 px-6 py-12 sm:px-12 sm:py-12 sm:m-8",
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
                 children: currentObj.nameOfCourse
@@ -119,10 +119,10 @@ function Education() {
         children: "No education available"
     });
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "text-center sm:p-20 bg-white",
+        className: "text-center bg-white h-96 sm:min-h-full sm:mb-32",
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
-                className: "text-2xl sm:text-5xl font-semibold tracking-tight sm:mb-16",
+                className: "text-3xl sm:text-5xl font-semibold tracking-tight mb-16",
                 children: "Education"
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {

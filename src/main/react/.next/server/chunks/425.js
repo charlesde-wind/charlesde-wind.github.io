@@ -124,7 +124,7 @@ function WorkExp() {
         return " - " + endDateWork;
     };
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-        className: "bg-white py-24 sm:py-20",
+        className: "bg-white min-h-screen sm:py-20",
         id: "work-experience",
         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             className: "mx-auto max-w-7xl px-6 lg:px-8",
@@ -159,9 +159,9 @@ function WorkExp() {
                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                     className: "mx-auto mt-16 max-w-3xl sm:mt-20 lg:mt-24 lg:max-w-6xl",
                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("dl", {
-                        className: "grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16",
+                        className: "grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16",
                         children: workExp.map((work)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                className: "relative pl-16 hover:pl-20 ",
+                                className: "relative px-6 sm:pl-16 sm:hover:pl-20",
                                 children: [
                                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("dt", {
                                         className: "text-lg font-semibold leading-7 text-gray-900",
@@ -179,7 +179,7 @@ function WorkExp() {
                                         ]
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("dd", {
-                                        className: "mt-2 text-base leading-7 text-gray-600",
+                                        className: "mt-2 text-base leading-7 text-gray-600 sm:mb-4 mb-4",
                                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(RenderBulletPoints, {
                                             desc: work.jobResponsibilities
                                         })
