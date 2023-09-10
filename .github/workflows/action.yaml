@@ -1,0 +1,29 @@
+name: Add nojekyll file
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Add nojekll
+        run: touch _next/.nojekyll && touch .nojekyll
+
+      - name: Configure Git
+        run: git config --global user.email "autobot@git" && git config --global user.name "Autobot"
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: '.'
+          author_name: Git Bot
+          message: 'Your commit message'
+
+      - name: fetch from main
+        run: git fetch origin main
+
+      - name: Git Push
+        run: git push origin main
+
